@@ -1,14 +1,26 @@
 {
-  "name": "note-taker",
+  "name": "Creating-Note-Taker",
   "version": "1.0.0",
-  "description": "",
+  "description": "Note Taker Express is a full-stack note-taking application built by Express.js. Users are able to save, view, and delete notes at any time by accessing and writing data to a JSON file.\r ## Technologies\r Node.js\r JavaScript / jQuery\r Express",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dependencies": {
+    "express": "^4.17.1",
+    "uniqid": "^5.4.0"
   },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leeyoungk/Creating-Note-Taker.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.16.4"
-  }
+  "bugs": {
+    "url": "https://github.com/leeyoungk/Creating-Note-Taker/issues"
+  },
+  "homepage": "https://github.com/leeyoungk/Creating-Note-Taker#readme"
 }
