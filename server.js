@@ -1,17 +1,16 @@
-const express = require('express');
-const routes = require('./routes/index.js');
-const PORT = process.env.port || 3001;
+const express = require( 'express' );
+const routes = require( './routes/index.js' );
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
+// Middleware
+app.use( express.json() );
+app.use( express.urlencoded( { extended: true } ) );
 
-// Middleware for parsing JSON and urlencoded form data
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use( express.static( 'public' ) );
+
 app.use( '/', routes );
-
-app.use(express.static('public'));
-
 
 
 app.listen(PORT, () =>

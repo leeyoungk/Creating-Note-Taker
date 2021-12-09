@@ -6,10 +6,10 @@ const {
 	appendToFile
 } = require( '../utility/fsUtils' );
 
-const dbPath = './db/db.json';
+const dbFilePath = './db/db.json';
 
 router.get( '/', ( req, res ) => {
-	readFromFile( dbPath )
+	readFromFile( dbFilePath )
 		.then( ( data ) => {
 			const parsedData = JSON.parse( data );
 
@@ -20,7 +20,6 @@ router.get( '/', ( req, res ) => {
 
 router.post( '/', ( req, res ) => {
 	console.log( 'New Notes', req.body );
-
 	const { title, text } = req.body;
 
 	const newNote = {
@@ -28,26 +27,24 @@ router.post( '/', ( req, res ) => {
 		text,
 		id: uniqid()
 	};
-
-	appendToFile( newNote, dbPath );
-
-	console.log( 'Note added!' );
-	res.status( 200 ).json( 'Note added !' );
+	appendToFile( newNote, dbFilePath );
+	console.log( 'Note added' );
+	res.status( 200 ).json( 'Note added' );
 } );
 
 router.delete( '/:id', ( req, res ) => {
 	const noteId = req.params.id;
 
-	readFromFile( dbPath )
+	readFromFile( dbFilePath )
 		.then( ( data ) => JSON.parse( data ) )
 		.then( ( json ) => {
 			const noteRemoved = json.filter( note => note.id !== noteId );
 			const dataJSON = JSON.stringify( noteRemoved, null, 4 );
 
-			writeToFile( dbPath, dataJSON );
+			writeToFile( dbFilePath, dataJSON );
 
-			console.log( 'Note deleted !' );
-			res.status( 200 ).json( 'Note deleted!' );
+			console.log( 'Note deleted ' );
+			res.status( 200 ).json( 'Note deleted' );
 		} )
 		.catch( ( error ) => res.status( 500 ).json( error ) );
 } );
